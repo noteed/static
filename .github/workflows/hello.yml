@@ -1,0 +1,12 @@
+name: hello
+on:
+  push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Run some inline shell script
+      run: |
+        echo Running within an inline script
+        echo Trying the env command...
+        env
