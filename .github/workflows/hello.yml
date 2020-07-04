@@ -8,10 +8,14 @@ jobs:
     - uses: cachix/install-nix-action@v10
       with:
         nix_path: nixpkgs=channel:nixos-unstable
+    - uses: actions/checkout@v2
+      with:
+        path: actions
+    - uses: actions/checkout@v2
+      with:
+        repository: 'hypered/design-system'
+        path: design-system
     - name: Run some inline shell script
       run: |
-        echo Running within an inline script
-        echo Trying the env command...
-        env
-        echo Trying a Nix command...
-        nix-shell --version
+        echo "GITHUB_WORKSPACE: $GITHUB_WORKSPACE"
+        ls "$GITHUB_WORKSPACE"
