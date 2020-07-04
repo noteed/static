@@ -12,7 +12,7 @@ jobs:
         nix_path: nixpkgs=channel:nixos-unstable
     - uses: actions/checkout@v2
     - name: Build the static site
-      run: nix-build site/ --attr html.all
+      run: nix-build site/ --attr static
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
