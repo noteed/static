@@ -1,4 +1,4 @@
-name: hello
+name: deployment
 on:
   push:
     branches:
@@ -7,10 +7,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: cachix/install-nix-action@v10
+    - name: Install Nix
+      uses: cachix/install-nix-action@v10
       with:
         nix_path: nixpkgs=channel:nixos-unstable
-    - uses: actions/checkout@v2
+    - name: Checkout this repository
+      uses: actions/checkout@v2
     - name: Build the static site
       run: nix-build site/ --attr static
     - name: Deploy to GitHub Pages
